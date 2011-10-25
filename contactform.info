@@ -1,0 +1,4 @@
+; $Id$
+name = Contact Form
+description = "This is the test module for practice the module creation"
+core = 6.x

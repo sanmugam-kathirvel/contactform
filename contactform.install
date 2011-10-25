@@ -1,0 +1,49 @@
+<?php
+function contactform_schema() {
+$schema['contactform_test'] = array(
+ 'description' => t('The base table for saved articles.'),
+ 'fields' => array(
+ 'cfid' => array(
+ 'description' => t('The primary identifier'),
+ 'type' => 'int',
+ 'unsigned' => TRUE,
+ 'not null' => TRUE), 
+ 'name' => array(
+ 'description' => t('The name.'),
+ 'type' => 'varchar',
+ 'length' => '100',
+ 'not null' => TRUE,
+ 'not null' => TRUE),
+'dob' => array(
+ 'description' => t('The dob.'),
+ 'type' => 'varchar',
+ 'length' => '100',
+ 'not null' => TRUE,
+ 'not null' => TRUE),
+'email' => array(
+ 'description' => t('The email.'),
+ 'type' => 'varchar',
+ 'length' => '100',
+ 'not null' => TRUE,
+ 'not null' => TRUE),
+'phone' => array(
+ 'description' => t('The phone'),
+ 'type' => 'int',
+ 'unsigned' => TRUE,
+ 'not null' => TRUE), 
+ ),
+ 'primary key' => array('cfid'),
+ );
+ return $schema;
+}
+ 
+function contactform_install() {
+ // Create my tables.
+ drupal_install_schema('contactform');
+}
+ 
+function contactform_uninstall() {
+ // Drop my tables.
+ drupal_uninstall_schema('contactform');
+}
+?>
