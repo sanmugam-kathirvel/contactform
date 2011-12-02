@@ -34,7 +34,15 @@ $items['admin/contactform/delete/%'] = array(
     'description' => 'Delete Contact',
     'type' => MENU_CALLBACK,
 );
-
+$items['admin/contactform/edit/%'] = array(
+    'title' => 'Edit Contact',
+    'page callback' => 'edit_contact',
+    //'page arguments' => array(3),
+    'access callback' => 'user_access',
+    //'access arguments' => array('access staff content'),
+    'description' => 'Edit Contact',
+    'type' => MENU_CALLBACK,
+);
 
 return $items;
 }
@@ -149,6 +157,10 @@ if (preg_match("/\D/",$phone)){
 
 function delete_contact(){
 echo "i am in delete function";
+
+}
+function edit_contact(){
+echo "i am in edit function";
 
 }
 

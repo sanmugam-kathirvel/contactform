@@ -1,11 +1,11 @@
 <?php
 function contactform_schema() {
-$schema['contactform_test'] = array(
+$schema['contactform'] = array(
  'description' => t('The base table for saved articles.'),
  'fields' => array(
  'cfid' => array(
  'description' => t('The primary identifier'),
- 'type' => 'int',
+ 'type' => 'serial',
  'unsigned' => TRUE,
  'not null' => TRUE), 
  'name' => array(
