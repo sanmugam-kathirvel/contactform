@@ -34,15 +34,7 @@ $items['admin/contactform/delete/%'] = array(
     'description' => 'Delete Contact',
     'type' => MENU_CALLBACK,
 );
-$items['admin/contactform/edit/%'] = array(
-    'title' => 'Edit Contact',
-    'page callback' => 'edit_contact',
-    //'page arguments' => array(3),
-    'access callback' => 'user_access',
-    //'access arguments' => array('access staff content'),
-    'description' => 'Edit Contact',
-    'type' => MENU_CALLBACK,
-);
+
 
 return $items;
 }
@@ -95,10 +87,10 @@ $phone = $form_values['values']['phone'];
 $date = $form_values['values']['dob'];
 $dob=$date['year'].'-'.$date['month'].'-'.$date['day'];
 
-//$result=db_query="INSERT INTO contactform_test {name,dob,email,phone} values(".$name,$dob,$email,$phone.")";
+//$result=db_query="INSERT INTO contactform {name,dob,email,phone} values(".$name,$dob,$email,$phone.")";
 //$result=db_query($insert_query,$name,$dob,$email,$phone);
-//$result=db_query("INSERT INTO {contactform_test} (name,dob,email,phone) VALUES ('%s', '%s', '%s', %d)", $form->name,$dob,$email,$phone) or die("unable to insert");
-$insert_query = "INSERT INTO {contactform_test} SET name = '%s', dob = '%s', email = '%s', phone = %d";
+//$result=db_query("INSERT INTO {contactform} (name,dob,email,phone) VALUES ('%s', '%s', '%s', %d)", $form->name,$dob,$email,$phone) or die("unable to insert");
+$insert_query = "INSERT INTO {contactform} SET name = '%s', dob = '%s', email = '%s', phone = %d";
     $result = db_query($insert_query, $name, $dob, $email, $phone)or die("unable to insert");
 if($result){
 echo $name.$dob.$email.$phone;
@@ -113,7 +105,7 @@ function contact_list(){
   $row = array();
   $destination = drupal_get_destination();
   $tablesort = tablesort_sql($header);
-  $query = "SELECT * FROM {contactform_test} ORDER BY cfid DESC";
+  $query = "SELECT * FROM {contactform} ORDER BY cfid DESC";
   $result=pager_query($query . $tablesort);
   while ($item = db_fetch_object($result,null)) {
     $row[]=array($item->name,$item->dob,$item->email,$item->phone,l("Edit",'admin/contactform/edit/'. $item->cfid),l("Delete", 'admin/contactform/delete/'. $item->cfid, array(/*"query" => $destination,*/ "attributes" => array("onClick" => "return confirm('Are you sure you want to delete this student record?');"))));
@@ -156,11 +148,7 @@ if (preg_match("/\D/",$phone)){
 }
 
 function delete_contact(){
-echo "i am in delete function";
-
-}
-function edit_contact(){
-echo "i am in edit function";
+	echo "i am in delete function";
 
 }
 

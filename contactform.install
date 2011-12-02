@@ -28,9 +28,10 @@ $schema['contactform'] = array(
  'not null' => TRUE),
 'phone' => array(
  'description' => t('The phone'),
- 'type' => 'int',
- 'unsigned' => TRUE,
- 'not null' => TRUE), 
+ 'type' => 'varchar',
+ 'length' => '10',
+ 'not null' => TRUE,
+ 'not null' => TRUE),
  ),
  'primary key' => array('cfid'),
  );
